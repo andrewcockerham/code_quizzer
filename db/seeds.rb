@@ -1,11 +1,12 @@
-if Rails.env.developemt?
+if Rails.env.development?
+# if Rails.env.developemt?
   family = Family.create!(
     name: "Programming",
     description: "Ruby, Rails and JavaScript practice problems",
     page_title: "Learn Ruby, Rails, JavaScript | How to code",
     slug: "learn-programming"
   )
-
+  p 'created faimly'
   User.create email: 'you@example.com', password: 'password', password_confirmation: 'password', username: Faker::Internet.user_name, role: 'admin'
 
   topic = family.topics.create! name: 'Rails Topic', slug: 'topic-slug', family_id: family.id
@@ -13,7 +14,7 @@ if Rails.env.developemt?
   quiz1.questions.create! body: 'Knock knock', answer: "Who's there"
 end
 
-
+p 'in seeds.rb'
 #############################################
 # stuff to be seeded in all environments
 #############################################

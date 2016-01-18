@@ -37,6 +37,9 @@ Compoundblingapplication::Application.routes.draw do
   post 'cancel_exam' => 'exams#cancel_exam'
   get 'graded_count' => 'exams#graded_count'
   get 'user_exams' => 'exams#user_exams'
+  post 'user_exams/send_to_SkillChest' => 'exams#send_to_SkillChest'
+  # match 'pages/send_pdf', to: 'pages#send_pdf', as: :send_pdf, via: [:get, :post]
+
 
   resources :families, :path => '' do
     resources :families, :only => [:show]

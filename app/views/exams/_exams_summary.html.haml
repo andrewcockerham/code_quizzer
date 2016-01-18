@@ -1,4 +1,4 @@
-%div.col-md-7.recently-completed-exams
+%div.col-md-8.recently-completed-exams
   %h3 Recently Completed Exams
   %table.table.table-hover
     %thead
@@ -7,6 +7,7 @@
       %td User
       %td % Correct
       %td Completed
+      %td SkillChest
     - @completed_exams.each do |exam|
       %tr
         %td= exam.quiz.topic.name
@@ -14,8 +15,19 @@
         %td= exam.user ? exam.user.username : "a_dude"
         %td= (exam.percent_correct * 100).round(2).to_s + "%"
         %td= time_ago_in_words(exam.updated_at) + " ago"
+        // CODE FOR SKILLCHEST.COM
+        = form_tag({controller: "exams", action: "send_to_SkillChest"}, method: "post")
+        = hidden_field_tag(:institution_id, 'KesbT3CxNAjCRnkZqa4DvgzZmRA1Bk+S')
+        // randomly created institution_id for CodeQuizzer
+        // SHOULD MAKE THIS PRIVATE!!
+        / = hidden_field_tag(:institution_id, '3')
+        = hidden_field_tag(:course_title, exam.quiz.topic.name)
+        = hidden_field_tag(:percent_correct, (exam.percent_correct * 100).round(2))
+        = hidden_field_tag(:student_email, current_user.email)
+        %td= submit_tag "Send to SkillChest", class: "btn btn-primary btn-sm sendToSkillChest"
+        // END CODE FOR SKILLCHEST
 
-%div.col-md-7.exams-in-progress
+%div.col-md-8.exams-in-progress
   %h3 Exams In Progress
   %table.table.table-hover
     %thead
