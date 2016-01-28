@@ -15,7 +15,7 @@ gem 'redcarpet'
 gem 'pygments.rb'
 gem 'pry'
 gem 'spring'
-gem 'figaro'
+# gem 'figaro'
 
 gem 'coffee-rails', '~> 4.0.0'
 gem 'sass-rails', '~> 4.0.3'
